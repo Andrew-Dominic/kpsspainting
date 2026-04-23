@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews — KPSS Painting | Sydney</title>
+    <meta name="description"
+        content="Read real customer reviews of KPSS Painting services in Sydney. See ratings, photos, and testimonials from our satisfied clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/reviews.css">
+    <style>
+        /* ===================== SHARED VARIABLES & RESET ===================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #F2EDE6;
+            --cream-light: #FAF8F4;
+            --dark: #1C1915;
+            --dark-warm: #2A2318;
+            --dark-mid: #241F18;
+            --accent: #C4873A;
+            --accent-muted: #D4A96A;
+            --sage: #7A9E8E;
+            --text: #2D2926;
+            --text-muted: #9C8E84;
+            --border: #E0D9D0;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-serif: 'DM Serif Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream-light);
+            color: var(--text);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        html {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            background: none;
+            font-family: var(--font-body);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: min(90%, 1160px);
+            margin: 0 auto;
+        }
+
+        /* ===================== NAV ===================== */
+        #nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 1.5rem;
+            background: rgba(28, 25, 21, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            height: 72px;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--cream-light);
+        }
+
+        .logo-sub {
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            margin-top: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            color: rgba(250, 248, 244, 0.6);
+            padding: 0.5rem 0.75rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0.25rem;
+            left: 0.75rem;
+            right: 0.75rem;
+            height: 1px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s var(--ease-out);
+        }
+
+        .nav-links a:hover {
+            color: var(--cream-light);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a.active {
+            color: var(--cream-light);
+        }
+
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .btn-quote {
+            display: inline-flex;
+            align-items: center;
+            background: var(--accent);
+            color: var(--dark);
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            padding: 0.6rem 1.4rem;
+            border-radius: 100px;
+            box-shadow: 0 2px 20px rgba(196, 135, 58, 0.3);
+            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-quote:hover {
+            background: var(--accent-muted);
+            box-shadow: 0 4px 28px rgba(196, 135, 58, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 6px;
+            margin-left: auto;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--cream-light);
+            transition: all 0.35s var(--ease-out);
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s var(--ease-smooth);
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 8vw, 3rem);
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.7);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-contact {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: rgba(250, 248, 244, 0.35);
+            letter-spacing: 0.1em;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            background: #141210;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(250, 248, 244, 0.06);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo-name {
+            font-size: 1.8rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(250, 248, 244, 0.3);
+            margin-top: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .footer-heading {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(250, 248, 244, 0.3);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer-links a {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.45);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-creds {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .footer-cred-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.4);
+        }
+
+        .footer-cred-row::before {
+            content: '✓';
+            color: var(--accent);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(250, 248, 244, 0.06);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .footer-copy {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.25);
+        }
+
+        .footer-by {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.2);
+        }
+
+        .footer-by a {
+            color: var(--accent);
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .footer-by a:hover {
+            opacity: 1;
+        }
+
+        /* ===================== REVIEWS-PAGE GRAIN ===================== */
+        .reviews-page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.035;
+            pointer-events: none;
+        }
+
+        .reviews-page-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-page-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 50% 60% at 50% 30%, rgba(196, 135, 58, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .reviews-page-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .reviews-page-breadcrumb {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 300;
+            color: rgba(250, 248, 244, 0.35);
+            margin-bottom: 1.5rem;
+        }
+
+        .reviews-page-breadcrumb a {
+            color: rgba(250, 248, 244, 0.35);
+            transition: color 0.2s;
+        }
+
+        .reviews-page-breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .reviews-page-cta {
+            margin-top: 2rem;
+        }
+
+        .reviews-page-cta .btn-write-review {
+            font-size: 0.92rem;
+            padding: 0.85rem 2rem;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-links,
+            .btn-quote {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="reviews-page">
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-name">KPSS</span>
+                <span class="logo-sub">PAINTING</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="reviews.html" class="active">Reviews</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn-quote">Get Quote</a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#home" class="mobile-nav-link">Home</a>
+        <a href="index.html#about" class="mobile-nav-link">About</a>
+        <a href="index.html#services" class="mobile-nav-link">Services</a>
+        <a href="index.html#gallery" class="mobile-nav-link">Gallery</a>
+        <a href="reviews.html" class="mobile-nav-link">Reviews</a>
+        <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+        <p class="mobile-menu-contact">+61 410 818 849</p>
+    </div>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="reviews-page-hero">
+        <div class="container">
+            <div class="reviews-page-breadcrumb">
+                <a href="index.html">Home</a> &nbsp;/&nbsp; Reviews
+            </div>
+            <h1>What Our<br><em>Clients Say.</em></h1>
+            <p>Honest reviews from real customers across Sydney. We're proud of the trust they place in us.</p>
+            <div class="reviews-page-cta">
+                <button class="btn-write-review" data-action="open-review-modal">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                    </svg>
+                    Write a Review
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== REVIEWS BODY ===================== -->
+    <section class="reviews-page-body">
+        <div class="container">
+            <!-- Summary Bar -->
+            <div class="reviews-summary" id="reviewsSummary">
+                <!-- JS populates this -->
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="reviews-actions">
+                <div class="reviews-sort-wrap">
+                    <span class="reviews-sort-label">Sort by:</span>
+                    <select class="reviews-sort-select" id="reviewsSort">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="highest">Highest Rating</option>
+                        <option value="lowest">Lowest Rating</option>
+                        <option value="photos">With Photos</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Review Grid -->
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- JS populates this -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== REVIEW MODAL ===================== -->
+    <div class="review-modal-overlay" id="reviewModalOverlay">
+        <div class="review-modal">
+            <button class="review-modal-close" id="reviewModalClose">✕</button>
+            <h3>Share Your Experience</h3>
+            <p class="review-modal-sub">Your feedback helps others find reliable painting services in Sydney.</p>
+
+            <form id="reviewForm" onsubmit="return false;">
+                <!-- Star Picker -->
+                <div class="review-form-group">
+                    <label class="review-form-label">Your Rating</label>
+                    <div class="star-picker" id="starPicker"></div>
+                </div>
+
+                <!-- Name -->
+                <div class="review-form-group">
+                    <label class="review-form-label">Your Name</label>
+                    <input type="text" class="review-form-input" id="reviewName" placeholder="e.g. John Smith"
+                        maxlength="60">
+                </div>
+
+                <!-- Review Text -->
+                <div class="review-form-group">
+                    <label class="review-form-label">Your Review</label>
+                    <textarea class="review-form-textarea" id="reviewText"
+                        placeholder="Tell us about your experience with KPSS Painting…" maxlength="1000"></textarea>
+                </div>
+
+                <!-- Photo Upload -->
+                <div class="review-form-group">
+                    <label class="review-form-label">Add Photos <span
+                            style="opacity:0.5;text-transform:none;letter-spacing:0">(optional, max 5)</span></label>
+                    <div class="photo-upload-zone" id="photoUploadZone">
+                        <div class="photo-upload-icon">📷</div>
+                        <div class="photo-upload-text"><strong>Click to upload</strong> or drag & drop</div>
+                        <div class="photo-upload-hint">JPEG, PNG — max 10MB each</div>
+                    </div>
+                    <input type="file" class="photo-upload-input" id="photoInput" accept="image/*" multiple>
+                    <div class="photo-previews" id="photoPreviews"></div>
+                </div>
+
+                <!-- Submit -->
+                <button type="button" class="review-submit-btn" id="reviewSubmitBtn">Submit Review →</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-name">KPSS</span>
+                        <span class="logo-sub">PAINTING</span>
+                    </div>
+                    <p class="footer-tagline">"Where Quality<br>Meets Perfection."</p>
+                </div>
+                <div>
+                    <div class="footer-heading">Navigation</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-heading">Credentials</div>
+                    <div class="footer-creds">
+                        <div class="footer-cred-row">Licensed & Insured — 469375C</div>
+                        <div class="footer-cred-row">ABN Registered — 71 674 955 367</div>
+                        <div class="footer-cred-row">Professional & Reliable</div>
+                        <div class="footer-cred-row">Sydney, NSW, Australia</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 KPSS Painting. All Rights Reserved.</span>
+                <span class="footer-by">Built by <a href="https://synflowstudio.vercel.app/" target="_blank">Synflow
+                        Studio</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/reviews.js"></script>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+    </script>
+</body>
+
+</html>

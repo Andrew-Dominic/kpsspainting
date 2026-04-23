@@ -12,6 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="css/reviews.css">
   <style>
     /* ===================== RESET & VARIABLES ===================== */
     *,
@@ -51,6 +52,19 @@
       font-family: var(--font-body);
       overflow-x: hidden;
       cursor: none;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    html {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
     }
 
     body.menu-open {
@@ -1341,7 +1355,7 @@
       color: rgba(250, 248, 244, 0.8);
     }
 
-    /* ===================== TESTIMONIALS ===================== */
+    /* ===================== REVIEWS ===================== */
     #reviews {
       background: var(--cream-light);
       padding: clamp(5rem, 10vw, 8rem) 0;
@@ -1349,7 +1363,7 @@
 
     .reviews-header {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2rem;
     }
 
     .reviews-header .eyebrow {
@@ -1365,130 +1379,13 @@
       margin-bottom: 1rem;
     }
 
-    .stars-row {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      justify-content: center;
-      margin-top: 0.75rem;
-    }
-
-    .star {
-      color: var(--accent);
-      font-size: 1.1rem;
-    }
-
-    .stars-label {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-left: 0.5rem;
-    }
-
-    .testimonial-carousel {
-      max-width: 760px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .testimonial-slide {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.5s var(--ease-smooth);
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    .testimonial-slide.active {
-      display: block;
-      opacity: 1;
-    }
-
-    .testimonial-quote-mark {
-      font-family: var(--font-display);
-      font-size: 7rem;
-      font-weight: 300;
-      line-height: 0.5;
-      color: var(--accent);
-      opacity: 0.4;
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .testimonial-text {
-      font-family: var(--font-display);
-      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 2rem;
-    }
-
-    .testimonial-author {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-    }
-
-    .testimonial-location {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-      letter-spacing: 0.04em;
-    }
-
-    .carousel-controls {
+    .reviews-header-ctas {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-
-    .carousel-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 1rem;
-      transition: all 0.3s var(--ease-out);
-      cursor: none;
-    }
-
-    .carousel-btn:hover {
-      background: var(--dark);
-      color: var(--accent);
-      border-color: var(--dark);
-    }
-
-    .carousel-dots {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-
-    .carousel-dot {
-      height: 8px;
-      border-radius: 100px;
-      background: var(--border);
-      width: 8px;
-      transition: all 0.4s var(--ease-out);
-      cursor: none;
-    }
-
-    .carousel-dot.active {
-      background: var(--accent);
-      width: 24px;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
 
     /* ===================== CONTACT ===================== */
@@ -1567,107 +1464,44 @@
 
     .quick-actions {
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
     }
 
     .quick-btn {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
-      padding: 0.9rem 1.25rem;
-      border-radius: 10px;
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: all 0.3s var(--ease-out);
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(250, 248, 244, 0.05);
+      border: 1px solid rgba(250, 248, 244, 0.1);
+      color: var(--accent);
+      transition: all 0.4s var(--ease-out);
       cursor: none;
       text-decoration: none;
     }
 
-    .quick-btn span {
-      flex: 1;
-    }
-
-    .quick-btn-arrow {
-      font-size: 0.75rem;
-      opacity: 0.6;
-      transition: transform 0.3s;
-    }
-
-    .quick-btn:hover .quick-btn-arrow {
-      transform: translateX(3px);
-      opacity: 1;
+    .quick-btn:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(196, 135, 58, 0.2);
+      border-color: var(--accent);
     }
 
     .quick-btn-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
     }
 
-    .btn-call {
-      background: var(--accent);
-      color: var(--dark);
-    }
-
-    .btn-call:hover {
-      background: var(--accent-muted);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(196, 135, 58, 0.3);
-    }
-
-    .btn-call .quick-btn-icon {
-      background: rgba(28, 25, 21, 0.2);
-    }
-
-    .btn-whatsapp {
-      background: #1FAD56;
-      color: white;
-    }
-
-    .btn-whatsapp:hover {
-      background: #22C25E;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(31, 173, 86, 0.3);
-    }
-
-    .btn-whatsapp .quick-btn-icon {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .btn-instagram {
-      background: linear-gradient(135deg, #E09B3D, #C74B4B, #B430B0);
-      color: white;
-    }
-
-    .btn-instagram:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(180, 48, 176, 0.3);
-    }
-
-    .btn-instagram .quick-btn-icon {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .btn-facebook {
-      background: #1877F2;
-      color: white;
-    }
-
-    .btn-facebook:hover {
-      background: #2080FF;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(24, 119, 242, 0.3);
-    }
-
-    .btn-facebook .quick-btn-icon {
-      background: rgba(255, 255, 255, 0.15);
+    .quick-btn span,
+    .quick-btn-arrow {
+      display: none;
     }
 
     /* Contact Form */
@@ -1941,29 +1775,10 @@
       }
 
       .badge-cluster {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        height: auto;
-        gap: 1rem;
-        position: static;
+        display: none;
       }
 
-      .badge {
-        position: static;
-        transform: none !important;
-        width: auto !important;
-      }
 
-      .badge:hover {
-        transform: translateY(-4px) !important;
-      }
-
-      .badge-1,
-      .badge-2,
-      .badge-3,
-      .badge-4 {
-        --r: none;
-      }
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -1971,12 +1786,18 @@
 
       .about-visual {
         order: -1;
+        margin-bottom: 0;
       }
 
       .about-stats-card {
-        position: static;
-        margin-top: 1.5rem;
-        display: inline-block;
+        position: relative;
+        z-index: 2;
+        margin: -6rem 0 2rem 1.5rem;
+        /* Pull up 6rem, space below 2rem, indent 1.5rem */
+        display: block;
+        width: fit-content;
+        max-width: calc(100% - 3rem);
+        padding: 1.25rem 1.75rem;
       }
 
       .services-grid {
@@ -2710,56 +2531,77 @@
     </div>
   </section>
 
-  <!-- ===================== TESTIMONIALS ===================== -->
+  <!-- ===================== REVIEWS ===================== -->
   <section id="reviews">
     <div class="container">
       <div class="reviews-header">
         <span class="eyebrow reveal">Client Reviews</span>
         <h2 class="section-title reveal delay-1" style="font-size:clamp(2.4rem,4.5vw,3.5rem)">What Our<br><em>Clients
             Say.</em></h2>
-        <div class="stars-row reveal delay-2">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-            class="star">★</span><span class="star">★</span>
-          <span class="stars-label">5.0 Average Rating</span>
+        <div class="reviews-header-ctas reveal delay-2">
+          <button class="btn-write-review" data-action="open-review-modal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+            Write a Review
+          </button>
+          <a href="reviews.html" class="btn-view-all">View All Reviews →</a>
         </div>
       </div>
-      <div class="testimonial-carousel reveal delay-2" id="testimonialCarousel">
-        <div class="testimonial-slide active">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">KPSS Painting did an amazing job on our home. Very neat and professional —
-            couldn't be happier with the result. The finish is absolutely flawless.</p>
-          <div class="testimonial-author">M. Johnson
-            <span class="testimonial-location">Sydney, NSW</span>
-          </div>
-        </div>
-        <div class="testimonial-slide">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Affordable pricing and excellent finishing. They completed everything on time with
-            zero mess left behind. Highly recommended to anyone looking for a reliable painter.</p>
-          <div class="testimonial-author">R. Patel
-            <span class="testimonial-location">Parramatta, NSW</span>
-          </div>
-        </div>
-        <div class="testimonial-slide">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Outstanding quality service. The team was professional, punctual, and the finish
-            exceeded our expectations. We'll definitely be using KPSS again for our next project.</p>
-          <div class="testimonial-author">L. Chen
-            <span class="testimonial-location">North Sydney, NSW</span>
-          </div>
-        </div>
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="prevSlide" aria-label="Previous">←</button>
-          <div class="carousel-dots">
-            <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
-            <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
-            <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
-          </div>
-          <button class="carousel-btn" id="nextSlide" aria-label="Next">→</button>
-        </div>
+
+      <!-- Summary Bar -->
+      <div class="reviews-summary reveal delay-2" id="reviewsSummary">
+        <!-- JS populates this -->
+      </div>
+
+      <!-- Review Grid (limited to 6 on homepage) -->
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- JS populates this -->
+      </div>
+
+      <div style="text-align:center;margin-top:2.5rem" class="reveal delay-3">
+        <a href="reviews.html" class="btn-view-all">See All Customer Reviews →</a>
       </div>
     </div>
   </section>
+
+  <!-- ===================== REVIEW MODAL ===================== -->
+  <div class="review-modal-overlay" id="reviewModalOverlay">
+    <div class="review-modal">
+      <button class="review-modal-close" id="reviewModalClose">✕</button>
+      <h3>Share Your Experience</h3>
+      <p class="review-modal-sub">Your feedback helps others find reliable painting services in Sydney.</p>
+      <form id="reviewForm" onsubmit="return false;">
+        <div class="review-form-group">
+          <label class="review-form-label">Your Rating</label>
+          <div class="star-picker" id="starPicker"></div>
+        </div>
+        <div class="review-form-group">
+          <label class="review-form-label">Your Name</label>
+          <input type="text" class="review-form-input" id="reviewName" placeholder="e.g. John Smith" maxlength="60">
+        </div>
+        <div class="review-form-group">
+          <label class="review-form-label">Your Review</label>
+          <textarea class="review-form-textarea" id="reviewText"
+            placeholder="Tell us about your experience with KPSS Painting…" maxlength="1000"></textarea>
+        </div>
+        <div class="review-form-group">
+          <label class="review-form-label">Add Photos <span
+              style="opacity:0.5;text-transform:none;letter-spacing:0">(optional, max 5)</span></label>
+          <div class="photo-upload-zone" id="photoUploadZone">
+            <div class="photo-upload-icon">📷</div>
+            <div class="photo-upload-text"><strong>Click to upload</strong> or drag & drop</div>
+            <div class="photo-upload-hint">JPEG, PNG — max 10MB each</div>
+          </div>
+          <input type="file" class="photo-upload-input" id="photoInput" accept="image/*" multiple>
+          <div class="photo-previews" id="photoPreviews"></div>
+        </div>
+        <button type="button" class="review-submit-btn" id="reviewSubmitBtn">Submit Review →</button>
+      </form>
+    </div>
+  </div>
 
   <!-- ===================== CONTACT ===================== -->
   <section id="contact">
@@ -2811,40 +2653,35 @@
             </div>
           </div>
           <div class="quick-actions reveal delay-3">
-            <a href="tel:+61410818849" class="quick-btn btn-call">
-              <div class="quick-btn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+            <a href="tel:+61410818849" class="quick-btn" aria-label="Call Now">
+              <div class="quick-btn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path
                     d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                 </svg></div>
-              <span>Call Now</span>
-              <span class="quick-btn-arrow">→</span>
             </a>
-            <a href="https://wa.me/61410818849" class="quick-btn btn-whatsapp" target="_blank" rel="noopener">
-              <div class="quick-btn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://wa.me/61410818849" class="quick-btn" target="_blank" rel="noopener"
+              aria-label="WhatsApp Us">
+              <div class="quick-btn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg></div>
-              <span>WhatsApp Us</span>
-              <span class="quick-btn-arrow">→</span>
             </a>
-            <a href="https://instagram.com/kpsspainting" class="quick-btn btn-instagram" target="_blank" rel="noopener">
-              <div class="quick-btn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+            <a href="https://instagram.com/kpsspainting" class="quick-btn" target="_blank" rel="noopener"
+              aria-label="Instagram">
+              <div class="quick-btn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <circle cx="12" cy="12" r="5" />
                   <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
                 </svg></div>
-              <span>Instagram</span>
-              <span class="quick-btn-arrow">→</span>
             </a>
-            <a href="https://facebook.com/kpsspainting" class="quick-btn btn-facebook" target="_blank" rel="noopener">
-              <div class="quick-btn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://facebook.com/kpsspainting" class="quick-btn" target="_blank" rel="noopener"
+              aria-label="Facebook">
+              <div class="quick-btn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg></div>
-              <span>Facebook</span>
-              <span class="quick-btn-arrow">→</span>
             </a>
           </div>
         </div>
@@ -2920,7 +2757,8 @@
       </div>
       <div class="footer-bottom">
         <span class="footer-copy">© 2026 KPSS Painting. All Rights Reserved.</span>
-        <span class="footer-by">Built by <a href="https://synflowstudio.com" target="_blank">Synflow Studio</a></span>
+        <span class="footer-by">Built by <a href="https://synflowstudio.vercel.app/" target="_blank">Synflow
+            Studio</a></span>
       </div>
     </div>
   </footer>
@@ -2936,6 +2774,9 @@
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <script>
     (function () {
       'use strict';
@@ -3181,29 +3022,7 @@
         strip.scrollBy({ left: 385, behavior: 'smooth' });
       });
 
-      // ===================== TESTIMONIALS CAROUSEL =====================
-      const slides = document.querySelectorAll('.testimonial-slide');
-      const dots = document.querySelectorAll('.carousel-dot');
-      let current = 0;
-      let autoPlay;
-
-      function goTo(n) {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = ((n % slides.length) + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-      }
-
-      function startAuto() { autoPlay = setInterval(() => goTo(current + 1), 5000); }
-      function stopAuto() { clearInterval(autoPlay); }
-
-      startAuto();
-      document.getElementById('nextSlide')?.addEventListener('click', () => { goTo(current + 1); stopAuto(); startAuto(); });
-      document.getElementById('prevSlide')?.addEventListener('click', () => { goTo(current - 1); stopAuto(); startAuto(); });
-      dots.forEach(dot => dot.addEventListener('click', () => { goTo(+dot.dataset.index); stopAuto(); startAuto(); }));
-      document.getElementById('testimonialCarousel')?.addEventListener('mouseenter', stopAuto);
-      document.getElementById('testimonialCarousel')?.addEventListener('mouseleave', startAuto);
+      // ===================== TESTIMONIALS (now handled by reviews.js) =====================
 
       // ===================== CONTACT FORM =====================
       document.getElementById('contactForm')?.addEventListener('submit', function (e) {
@@ -3244,6 +3063,8 @@
 
     })();
   </script>
+  <!-- Reviews System -->
+  <script src="js/reviews.js"></script>
 </body>
 
 </html>
