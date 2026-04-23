@@ -1110,11 +1110,38 @@
       background: rgba(250, 248, 244, 0.035);
       border: 1px solid rgba(250, 248, 244, 0.07);
       border-radius: 14px;
-      padding: 2.5rem;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
       transition: background 0.4s var(--ease-smooth), border-color 0.4s, transform 0.4s var(--ease-out), box-shadow 0.4s;
       cursor: none;
+    }
+
+    .service-card-img {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(250, 248, 244, 0.05);
+    }
+
+    .service-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    .service-card:hover .service-card-img img {
+      transform: scale(1.04);
+    }
+
+    .service-card-content {
+      padding: 2rem 2.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card::before {
@@ -1124,6 +1151,8 @@
       background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(196, 135, 58, 0.07) 0%, transparent 70%);
       opacity: 0;
       transition: opacity 0.4s;
+      pointer-events: none;
+      z-index: 2;
     }
 
     .service-card:hover {
@@ -1139,23 +1168,13 @@
 
     .service-card-top {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: flex-start;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .service-icon svg {
-      width: 24px;
-      height: 24px;
+      margin-bottom: 1rem;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 3;
     }
 
     .service-arrow {
@@ -2448,65 +2467,59 @@
       <div class="services-grid">
         <div class="service-card reveal delay-1">
           <div class="service-card-top">
-            <div class="service-icon" style="background:rgba(196,135,58,0.15)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C4873A" stroke-width="1.5" stroke-linecap="round">
-                <path d="M4 6h16M4 10h16M4 14h10" />
-                <rect x="14" y="12" width="6" height="8" rx="1" />
-              </svg>
-            </div>
             <div class="service-arrow">→</div>
           </div>
-          <div class="service-tag">Residential & Commercial</div>
-          <div class="service-name">Interior Painting</div>
-          <div class="service-desc">Smooth, clean interior painting that enhances every room — from preparation and
-            priming to the perfect final coat.</div>
+          <div class="service-card-img">
+            <img src="gallery_1_after_1776580135445.png" alt="Interior Painting Project" loading="lazy">
+          </div>
+          <div class="service-card-content">
+            <div class="service-tag">Residential & Commercial</div>
+            <div class="service-name">Interior Painting</div>
+            <div class="service-desc">Smooth, clean interior painting that enhances every room — from preparation and
+              priming to the perfect final coat.</div>
+          </div>
         </div>
         <div class="service-card reveal delay-2">
           <div class="service-card-top">
-            <div class="service-icon" style="background:rgba(122,158,142,0.15)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#7A9E8E" stroke-width="1.5" stroke-linecap="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                <path d="M9 22V12h6v10" />
-              </svg>
-            </div>
             <div class="service-arrow">→</div>
           </div>
-          <div class="service-tag">Weather-Resistant Finish</div>
-          <div class="service-name">Exterior Painting</div>
-          <div class="service-desc">Durable exterior coatings that protect your property and hold their colour season
-            after season — built for Australian weather.</div>
+          <div class="service-card-img">
+            <img src="gallery_4_after_1776580236434.png" alt="Exterior Painting Project" loading="lazy">
+          </div>
+          <div class="service-card-content">
+            <div class="service-tag">Weather-Resistant Finish</div>
+            <div class="service-name">Exterior Painting</div>
+            <div class="service-desc">Durable exterior coatings that protect your property and hold their colour season
+              after season — built for Australian weather.</div>
+          </div>
         </div>
         <div class="service-card reveal delay-3">
           <div class="service-card-top">
-            <div class="service-icon" style="background:rgba(196,135,58,0.15)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C4873A" stroke-width="1.5" stroke-linecap="round">
-                <rect x="2" y="7" width="20" height="3" rx="1" />
-                <rect x="2" y="12" width="20" height="3" rx="1" />
-                <rect x="2" y="17" width="14" height="3" rx="1" />
-              </svg>
-            </div>
             <div class="service-arrow">→</div>
           </div>
-          <div class="service-tag">Premium Preparation</div>
-          <div class="service-name">Wall Finishing</div>
-          <div class="service-desc">Expert wall preparation and surface finishing — filling, sanding, priming — for a
-            flawless, long-lasting result you'll love.</div>
+          <div class="service-card-img">
+            <img src="gallery_3_after_1776580203196.png" alt="Wall Finishing Project" loading="lazy">
+          </div>
+          <div class="service-card-content">
+            <div class="service-tag">Premium Preparation</div>
+            <div class="service-name">Wall Finishing</div>
+            <div class="service-desc">Expert wall preparation and surface finishing — filling, sanding, priming — for a
+              flawless, long-lasting result you'll love.</div>
+          </div>
         </div>
         <div class="service-card reveal delay-4">
           <div class="service-card-top">
-            <div class="service-icon" style="background:rgba(122,158,142,0.15)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#7A9E8E" stroke-width="1.5" stroke-linecap="round">
-                <circle cx="12" cy="12" r="3" />
-                <path
-                  d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
-              </svg>
-            </div>
             <div class="service-arrow">→</div>
           </div>
-          <div class="service-tag">Fast Turnaround</div>
-          <div class="service-name">Touch-ups & Repairs</div>
-          <div class="service-desc">Fixing cracks, surface damage, and repainting small areas — neat, fast, and
-            invisible. We match colours perfectly.</div>
+          <div class="service-card-img">
+            <img src="gallery_5_after_1776580272027.png" alt="Touch-ups & Repairs Project" loading="lazy">
+          </div>
+          <div class="service-card-content">
+            <div class="service-tag">Fast Turnaround</div>
+            <div class="service-name">Touch-ups & Repairs</div>
+            <div class="service-desc">Fixing cracks, surface damage, and repainting small areas — neat, fast, and
+              invisible. We match colours perfectly.</div>
+          </div>
         </div>
       </div>
       <div class="services-cta reveal">
