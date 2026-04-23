@@ -1338,14 +1338,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      clip-path: inset(0 50% 0 0);
+      z-index: 2;
     }
 
     .ba-after {
       background: linear-gradient(135deg, #E0D8CC 0%, #EDE5D8 50%, #F5F0E8 100%);
-      clip-path: inset(0 50% 0 0);
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1;
     }
 
     .ba-label {
@@ -2413,7 +2415,7 @@
         </div>
         <div class="about-visual reveal-right">
           <div class="about-img-wrap">
-            <img src="about_painter_1776580102214.png" alt="Professional painter at work" loading="lazy">
+            <img src="assets/images/about.png" alt="Professional painter at work" loading="lazy">
           </div>
           <div class="about-stats-card">
             <div class="stat-row">
@@ -2533,10 +2535,10 @@
           <div class="gallery-card">
             <div class="ba-slider">
               <div class="ba-before">
-                <img src="gallery_1_before_1776580120250.png" alt="Living room before painting" loading="lazy">
+                <img src="assets/before after/b1.png" alt="Living room before painting" loading="lazy">
               </div>
               <div class="ba-after">
-                <img src="gallery_1_after_1776580135445.png" alt="Living room after painting" loading="lazy">
+                <img src="assets/before after/a1.png" alt="Living room after painting" loading="lazy">
               </div>
               <span class="ba-label ba-label-before">Before</span>
               <span class="ba-label ba-label-after">After</span>
@@ -2555,10 +2557,10 @@
           <div class="gallery-card">
             <div class="ba-slider">
               <div class="ba-before">
-                <img src="gallery_2_before_1776580153281.png" alt="Office space before painting" loading="lazy">
+                <img src="assets/before after/b2.png" alt="Office space before painting" loading="lazy">
               </div>
               <div class="ba-after">
-                <img src="gallery_2_after_1776580171141.png" alt="Office space after painting" loading="lazy">
+                <img src="assets/before after/a2.png" alt="Office space after painting" loading="lazy">
               </div>
               <span class="ba-label ba-label-before">Before</span>
               <span class="ba-label ba-label-after">After</span>
@@ -2577,10 +2579,10 @@
           <div class="gallery-card">
             <div class="ba-slider">
               <div class="ba-before">
-                <img src="gallery_3_before_1776580186050.png" alt="Plain wall before" loading="lazy">
+                <img src="assets/before after/b3.png" alt="Plain wall before" loading="lazy">
               </div>
               <div class="ba-after">
-                <img src="gallery_3_after_1776580203196.png" alt="Feature wall after" loading="lazy">
+                <img src="assets/before after/a3.png" alt="Feature wall after" loading="lazy">
               </div>
               <span class="ba-label ba-label-before">Before</span>
               <span class="ba-label ba-label-after">After</span>
@@ -2599,10 +2601,10 @@
           <div class="gallery-card">
             <div class="ba-slider">
               <div class="ba-before">
-                <img src="gallery_4_before_1776580221234.png" alt="House exterior before" loading="lazy">
+                <img src="assets/before after/b4.png" alt="House exterior before" loading="lazy">
               </div>
               <div class="ba-after">
-                <img src="gallery_4_after_1776580236434.png" alt="House exterior after" loading="lazy">
+                <img src="assets/before after/a4.png" alt="House exterior after" loading="lazy">
               </div>
               <span class="ba-label ba-label-before">Before</span>
               <span class="ba-label ba-label-after">After</span>
@@ -2621,10 +2623,10 @@
           <div class="gallery-card">
             <div class="ba-slider">
               <div class="ba-before">
-                <img src="gallery_5_before_1776580255054.png" alt="Bedroom before" loading="lazy">
+                <img src="assets/before after/b5.png" alt="Bedroom before" loading="lazy">
               </div>
               <div class="ba-after">
-                <img src="gallery_5_after_1776580272027.png" alt="Bedroom after" loading="lazy">
+                <img src="assets/before after/a5.png" alt="Bedroom after" loading="lazy">
               </div>
               <span class="ba-label ba-label-before">Before</span>
               <span class="ba-label ba-label-after">After</span>
@@ -3172,19 +3174,19 @@
 
       // ===================== BEFORE/AFTER SLIDER =====================
       document.querySelectorAll('.ba-slider').forEach(slider => {
-        const after = slider.querySelector('.ba-after');
+        const before = slider.querySelector('.ba-before');
         const handle = slider.querySelector('.ba-handle');
         let dragging = false;
 
         const setPos = (clientX) => {
           const rect = slider.getBoundingClientRect();
           const pct = Math.max(3, Math.min(97, ((clientX - rect.left) / rect.width) * 100));
-          after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+          before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
           handle.style.left = pct + '%';
         };
 
         // Init at 50%
-        after.style.clipPath = 'inset(0 50% 0 0)';
+        before.style.clipPath = 'inset(0 50% 0 0)';
         handle.style.left = '50%';
 
         handle.addEventListener('mousedown', (e) => { dragging = true; e.preventDefault(); });
