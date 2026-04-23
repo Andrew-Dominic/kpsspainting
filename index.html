@@ -3294,19 +3294,63 @@
       // ===================== TESTIMONIALS (now handled by reviews.js) =====================
 
       // ===================== CONTACT FORM =====================
-      document.getElementById('contactForm')?.addEventListener('submit', function (e) {
+      document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
         e.preventDefault();
         const inputs = this.querySelectorAll('input, select, textarea');
         let valid = true;
-        inputs.forEach(inp => { if (!inp.value.trim()) { inp.style.borderColor = 'rgba(196,80,80,0.5)'; valid = false; } else inp.style.borderColor = ''; });
+
+        // Simple validation
+        const data = {};
+        inputs.forEach(inp => {
+          if (!inp.value.trim() && inp.hasAttribute('required')) {
+            inp.style.borderColor = 'rgba(196,80,80,0.5)';
+            valid = false;
+          } else {
+            inp.style.borderColor = '';
+            // Map inputs to data object
+            if (inp.classList.contains('form-input') || inp.classList.contains('form-textarea') || inp.classList.contains('form-select')) {
+              const label = inp.previousElementSibling.textContent.toLowerCase().replace(' ', '_');
+              data[label] = inp.value.trim();
+            }
+          }
+        });
+
         if (!valid) return;
+
         const btn = this.querySelector('.form-submit');
-        btn.textContent = 'Sending…';
+        const originalBtnText = btn.textContent;
+        btn.textContent = 'Sending Message…';
         btn.disabled = true;
-        setTimeout(() => {
-          this.style.display = 'none';
-          document.getElementById('formSuccess').style.display = 'block';
-        }, 1200);
+
+        try {
+          // Check if Firebase is initialized in reviews.js or globally
+          if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            throw new Error('Firebase not ready');
+          }
+
+          const db = firebase.firestore();
+          await db.collection('leads').add({
+            ...data,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            source: 'website_contact_form'
+          });
+
+          // Success UI
+          this.style.transition = 'opacity 0.4s var(--ease-out)';
+          this.style.opacity = '0';
+          setTimeout(() => {
+            this.style.display = 'none';
+            const successEl = document.getElementById('formSuccess');
+            successEl.style.display = 'block';
+            successEl.classList.add('reveal');
+          }, 400);
+
+        } catch (error) {
+          console.error("Lead submission error:", error);
+          btn.textContent = 'Error! Try Again';
+          btn.disabled = false;
+          setTimeout(() => { btn.textContent = originalBtnText; }, 3000);
+        }
       });
 
       // ===================== BACK TO TOP =====================
