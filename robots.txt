@@ -1,0 +1,34 @@
+# KPSS Painting — robots.txt
+# https://www.kpsspainting.com.au
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# AI Crawlers — explicitly allowed for AEO (AI Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.kpsspainting.com.au/sitemap.xml

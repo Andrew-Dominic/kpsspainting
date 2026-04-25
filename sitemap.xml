@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.kpsspainting.com.au/</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.kpsspainting.com.au/about_painter_1776580102214.png</image:loc>
+      <image:title>KPSS Painting — Professional Painters Sydney</image:title>
+      <image:caption>KPSS Painting professional painter at work in Sydney NSW</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Reviews -->
+  <url>
+    <loc>https://www.kpsspainting.com.au/reviews.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
