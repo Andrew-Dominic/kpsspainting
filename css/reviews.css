@@ -201,6 +201,34 @@
     border-color: rgba(196, 135, 58, 0.25);
 }
 
+.review-card--featured {
+    border-color: rgba(196, 135, 58, 0.2);
+    background: linear-gradient(135deg, var(--cream) 0%, rgba(196, 135, 58, 0.03) 100%);
+}
+
+/* Verified + Featured Badges */
+.review-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: 500;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+    letter-spacing: 0.02em;
+}
+
+.review-badge--verified {
+    color: #5a9e7a;
+    background: rgba(90, 158, 122, 0.08);
+}
+
+.review-badge--featured {
+    color: var(--accent);
+    background: rgba(196, 135, 58, 0.08);
+}
+
 .review-card-header {
     display: flex;
     align-items: center;

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KPSS Admin — Reviews Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="auth-loading">
+
+  <div class="layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__logo">
+        <div class="sidebar__logo-name">KPSS</div>
+        <div class="sidebar__logo-sub">PAINTING · ADMIN</div>
+      </div>
+
+      <nav class="sidebar__nav">
+        <span class="sidebar__label">Dashboard</span>
+
+        <a href="dashboard.html" class="sidebar__link active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Overview
+        </a>
+
+        <span class="sidebar__label">Management</span>
+
+        <a href="dashboard.html" class="sidebar__link active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Reviews
+          <span class="badge-count" id="pendingBadge">0</span>
+        </a>
+
+        <a href="#" class="sidebar__link" style="opacity:0.35;pointer-events:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          Leads
+          <span style="margin-left:auto;font-size:0.6rem;color:var(--text-dim);">Soon</span>
+        </a>
+
+        <a href="#" class="sidebar__link" style="opacity:0.35;pointer-events:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          Analytics
+          <span style="margin-left:auto;font-size:0.6rem;color:var(--text-dim);">Soon</span>
+        </a>
+
+        <span class="sidebar__label">Settings</span>
+
+        <a href="#" class="sidebar__link" style="opacity:0.35;pointer-events:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          Settings
+          <span style="margin-left:auto;font-size:0.6rem;color:var(--text-dim);">Soon</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="sidebar__user">
+          <div class="sidebar__user-avatar" id="userAvatar">A</div>
+          <span class="sidebar__user-name" id="userName">Admin</span>
+          <button class="sidebar__logout" onclick="KPSSAdmin.logout()" title="Sign Out">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar backdrop for mobile -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="hamburger-btn" id="hamburgerBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="topbar__title">Reviews</h1>
+        <div class="topbar__search">
+          <span class="topbar__search-icon">⌕</span>
+          <input type="text" class="topbar__search-input" id="reviewSearch" placeholder="Search reviews…">
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="content">
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card stat-card--total">
+            <div class="stat-card__icon">📊</div>
+            <div class="stat-card__label">Total Reviews</div>
+            <div class="stat-card__value" id="statTotal">—</div>
+          </div>
+          <div class="stat-card stat-card--pending">
+            <div class="stat-card__icon">⏳</div>
+            <div class="stat-card__label">Pending</div>
+            <div class="stat-card__value" id="statPending">—</div>
+          </div>
+          <div class="stat-card stat-card--approved">
+            <div class="stat-card__icon">✓</div>
+            <div class="stat-card__label">Approved</div>
+            <div class="stat-card__value" id="statApproved">—</div>
+          </div>
+          <div class="stat-card stat-card--spam">
+            <div class="stat-card__icon">🚫</div>
+            <div class="stat-card__label">Spam / Rejected</div>
+            <div class="stat-card__value" id="statSpam">—</div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="pending">Pending</button>
+          <button class="filter-tab" data-filter="approved">Approved</button>
+          <button class="filter-tab" data-filter="rejected">Rejected</button>
+          <button class="filter-tab" data-filter="spam">Spam</button>
+          <button class="filter-tab" data-filter="featured">★ Featured</button>
+        </div>
+
+        <!-- Reviews Grid -->
+        <div class="reviews-grid" id="reviewsGrid">
+          <!-- Filled by JS -->
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/reviews.js"></script>
+  <script>
+    // Mobile sidebar toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        backdrop.classList.toggle('open');
+      });
+      backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('open');
+      });
+    }
+
+    // Update pending badge from stats
+    const observer = new MutationObserver(() => {
+      const val = document.getElementById('statPending')?.textContent;
+      const badge = document.getElementById('pendingBadge');
+      if (badge && val && val !== '—') badge.textContent = val;
+    });
+    const pendingEl = document.getElementById('statPending');
+    if (pendingEl) observer.observe(pendingEl, { childList: true, characterData: true, subtree: true });
+  </script>
+</body>
+</html>

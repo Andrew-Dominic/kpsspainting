@@ -28,39 +28,6 @@
     const MAX_PHOTO_SIZE_PX = 1200; // Compress to max 1200px
     const PHOTO_QUALITY = 0.75;
 
-    // Seed data — shown when Firestore is empty or unavailable
-    const SEED_REVIEWS = [
-        {
-            id: 'seed-1',
-            name: 'M. Johnson',
-            rating: 5,
-            text: 'KPSS Painting did an amazing job on our home. Very neat and professional — couldn\'t be happier with the result. The finish is absolutely flawless.',
-            timestamp: new Date('2025-11-15'),
-            photos: [],
-            location: 'Sydney, NSW',
-            isSeed: true
-        },
-        {
-            id: 'seed-2',
-            name: 'R. Patel',
-            rating: 5,
-            text: 'Affordable pricing and excellent finishing. They completed everything on time with zero mess left behind. Highly recommended to anyone looking for a reliable painter.',
-            timestamp: new Date('2025-12-02'),
-            photos: [],
-            location: 'Parramatta, NSW',
-            isSeed: true
-        },
-        {
-            id: 'seed-3',
-            name: 'L. Chen',
-            rating: 5,
-            text: 'Outstanding quality service. The team was professional, punctual, and the finish exceeded our expectations. We\'ll definitely be using KPSS again for our next project.',
-            timestamp: new Date('2026-01-20'),
-            photos: [],
-            location: 'North Sydney, NSW',
-            isSeed: true
-        }
-    ];
 
     // ===================== STATE =====================
     let db = null;
@@ -97,42 +64,39 @@
     // ===================== FIRESTORE CRUD =====================
     function loadReviews() {
         if (!firebaseReady || !db) {
-            renderReviews(SEED_REVIEWS);
+            renderReviews([]);
             return;
         }
 
         showSkeletons();
 
+        // SERVER-SIDE FILTER: Only fetch approved reviews — never pending/spam/rejected
+        // Sorting is handled client-side by applyFilters() to avoid needing a composite index
         db.collection(COLLECTION_NAME)
-            .orderBy('timestamp', 'desc')
+            .where('status', '==', 'approved')
             .onSnapshot(
                 (snapshot) => {
-                    const liveReviews = snapshot.docs.map(doc => {
+                    allReviews = snapshot.docs.map(doc => {
                         const d = doc.data();
                         return {
                             id: doc.id,
                             name: d.name || 'Anonymous',
                             rating: d.rating || 5,
-                            text: d.text || '',
-                            timestamp: d.timestamp ? d.timestamp.toDate() : new Date(),
+                            text: d.text || d.review || '',
+                            timestamp: d.timestamp ? d.timestamp.toDate() : (d.createdAt ? d.createdAt.toDate() : new Date()),
                             photos: d.photos || [],
                             location: d.location || '',
+                            featured: d.featured || false,
+                            source: d.source || 'website',
                             isSeed: false
                         };
                     });
-
-                    // Merge live reviews with seeds (seeds at the end if fewer live reviews)
-                    if (liveReviews.length === 0) {
-                        allReviews = [...SEED_REVIEWS];
-                    } else {
-                        allReviews = [...liveReviews, ...SEED_REVIEWS];
-                    }
                     renderReviews(applyFilters(allReviews));
                 },
                 (error) => {
                     console.warn('Firestore listen error:', error);
-                    allReviews = [...SEED_REVIEWS];
-                    renderReviews(allReviews);
+                    allReviews = [];
+                    renderReviews([]);
                 }
             );
     }
@@ -141,12 +105,16 @@
         if (!firebaseReady || !db) {
             throw new Error('Firebase is not configured yet.');
         }
+        // Standardized review model — always pending on creation
         await db.collection(COLLECTION_NAME).add({
             name: reviewData.name,
             rating: reviewData.rating,
             text: reviewData.text,
             photos: reviewData.photos,
             location: reviewData.location || '',
+            status: 'pending',
+            featured: false,
+            source: 'website',
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
     }
@@ -254,13 +222,15 @@
             : '';
 
         const locationHTML = review.location ? ` · ${review.location}` : '';
+        const verifiedBadge = !review.isSeed ? '<span class="review-badge review-badge--verified" title="Verified Review">✓ Verified</span>' : '';
+        const featuredBadge = review.featured ? '<span class="review-badge review-badge--featured" title="Featured Review">★ Featured</span>' : '';
 
         return `
-      <div class="review-card">
+      <div class="review-card${review.featured ? ' review-card--featured' : ''}">
         <div class="review-card-header">
           <div class="review-avatar">${initial}</div>
           <div class="review-meta">
-            <div class="review-author">${escapeHTML(review.name)}</div>
+            <div class="review-author">${escapeHTML(review.name)} ${verifiedBadge} ${featuredBadge}</div>
             <div class="review-date">${timeAgo(review.timestamp)}${locationHTML}</div>
           </div>
         </div>
@@ -280,15 +250,22 @@
             grid.innerHTML = `
         <div class="reviews-empty">
           <div class="reviews-empty-icon">✍</div>
-          <div class="reviews-empty-title">No reviews yet</div>
-          <div class="reviews-empty-text">Be the first to share your experience with KPSS Painting.</div>
+          <div class="reviews-empty-title">Be the first to share your experience</div>
+          <div class="reviews-empty-text">Your feedback helps us deliver even better results across Sydney. We'd love to hear from you.</div>
         </div>
       `;
             return;
         }
 
-        // On the index page, only show first 6
-        const displayReviews = isFullPage ? reviews : reviews.slice(0, 6);
+        // Homepage: show ONLY featured reviews (curated), fallback to first 6
+        // Reviews page: show all approved reviews
+        let displayReviews;
+        if (isFullPage) {
+            displayReviews = reviews;
+        } else {
+            const featured = reviews.filter(r => r.featured);
+            displayReviews = featured.length >= 3 ? featured.slice(0, 6) : reviews.slice(0, 6);
+        }
         grid.innerHTML = displayReviews.map(renderReviewCard).join('');
         renderSummary();
     }
@@ -510,7 +487,7 @@
                 photos: photoUrls
             });
 
-            showToast('✓ Thank you for your review!', 'success');
+            showToast('Thank you for sharing your experience. Your review will be reviewed shortly.', 'success');
             closeModal();
 
         } catch (error) {

@@ -308,7 +308,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reviews.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/image-trail.css">
   <style>
     /* ===================== RESET & VARIABLES ===================== */
     *,
@@ -2605,12 +2608,10 @@
         <span class="logo-sub">PAINTING</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#gallery">Projects</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
       <a href="#contact" class="btn-quote">Get Quote</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -2621,10 +2622,9 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" class="mobile-nav-link">Home</a>
-    <a href="#about" class="mobile-nav-link">About</a>
     <a href="#services" class="mobile-nav-link">Services</a>
-    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+    <a href="#gallery" class="mobile-nav-link">Projects</a>
+    <a href="#about" class="mobile-nav-link">About</a>
     <a href="#reviews" class="mobile-nav-link">Reviews</a>
     <a href="#contact" class="mobile-nav-link">Contact</a>
     <p class="mobile-menu-contact">+61 410 818 849</p>
@@ -2635,56 +2635,50 @@
     <div class="hero-bg-glow"></div>
     <div class="hero-grain"></div>
     <div class="hero-inner">
+
+      <!-- LEFT: Content -->
       <div class="hero-content">
-        <span class="eyebrow">Sydney's Trusted Painters &nbsp;·&nbsp; 15+ Years Experience</span>
+        <span class="eyebrow">Sydney's Trusted Painting Specialists</span>
         <h1 class="hero-headline">
-          <span class="line"><span class="line-inner">Perfect</span></span>
-          <span class="line"><em><span class="line-inner">Finish.</span></em></span>
-          <span class="line"><span class="line-inner">Professional</span></span>
-          <span class="line"><span class="line-inner">Touch.</span></span>
+          <span class="line"><span class="line-inner"><em>Premium</em></span></span>
+          <span class="line"><span class="line-inner">Painting for</span></span>
+          <span class="line"><span class="line-inner">Sydney Spaces.</span></span>
         </h1>
-        <p class="hero-sub">We deliver high-quality painting services with precision, reliability, and on-time
-          completion — every single time.</p>
+        <p class="hero-sub">Licensed residential and commercial painters delivering clean finishes, reliable service, and premium workmanship across Sydney.</p>
         <div class="hero-ctas">
           <a href="#contact" class="btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
             Get Free Quote
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="tel:+61410818849" class="btn-outline">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            Call +61 410 818 849
-          </a>
+          <a href="#gallery" class="btn-outline">View Projects</a>
+        </div>
+        <div class="hero-trust-strip" id="heroTrustStrip">
+          <div class="hero-trust-item"><span class="trust-icon">★★★★★</span> 5-Star Rated</div>
+          <div class="hero-trust-dot"></div>
+          <div class="hero-trust-item">15+ Years Experience</div>
+          <div class="hero-trust-dot"></div>
+          <div class="hero-trust-item">Licensed &amp; Insured</div>
+          <div class="hero-trust-dot"></div>
+          <div class="hero-trust-item">Free Estimates</div>
         </div>
       </div>
-      <div class="badge-cluster" id="badgeCluster">
-        <div class="badge badge-1">
-          <div class="badge-check">✓</div>
-          <div class="badge-label">Licensed & Insured</div>
-          <div class="badge-title">Lic No: 469375C</div>
-          <div class="badge-sub">NSW Certified Painter</div>
-        </div>
-        <div class="badge badge-2">
-          <div class="badge-label">ABN Registered</div>
-          <div class="badge-title">71 674 955 367</div>
-          <div class="badge-sub">Australian Business</div>
-        </div>
-        <div class="badge badge-3">
-          <div class="badge-check">★</div>
-          <div class="badge-label">Industry Expertise</div>
-          <div class="badge-title">15+ Years Experience</div>
-          <div class="badge-sub">Licensed & Recommended</div>
-        </div>
-        <div class="badge badge-4">
-          <div class="badge-label">Call Anytime</div>
-          <div class="badge-title">+61 410 818 849</div>
-          <div class="badge-sub">Available 7 days</div>
+
+      <!-- RIGHT: Visual -->
+      <div class="hero-visual" id="heroVisual">
+        <div class="hero-img-wrap">
+          <img src="assets/images/hero-painting.png" alt="Professional painter finishing a premium interior wall in a modern Sydney home" width="800" height="1067" loading="eager">
+          <div class="hero-img-overlay"></div>
+          <div class="hero-img-badge hero-img-badge-1">
+            <div class="hero-img-badge-icon">✓</div>
+            <span class="hero-img-badge-text">Licensed — 469375C</span>
+          </div>
+          <div class="hero-img-badge hero-img-badge-2">
+            <div class="hero-img-badge-icon">★</div>
+            <span class="hero-img-badge-text">15+ Years</span>
+          </div>
         </div>
       </div>
+
     </div>
     <div class="hero-scroll" id="heroScroll">
       <div class="hero-scroll-line"></div>
@@ -3517,7 +3511,8 @@
         const lines = document.querySelectorAll('.hero-headline .line-inner');
         const heroSub = document.querySelector('.hero-sub');
         const heroCtas = document.querySelector('.hero-ctas');
-        const badgeCluster = document.getElementById('badgeCluster');
+        const heroTrustStrip = document.getElementById('heroTrustStrip');
+        const heroVisual = document.getElementById('heroVisual');
         const heroScroll = document.getElementById('heroScroll');
         let delay = 0.1;
 
@@ -3537,8 +3532,16 @@
           heroCtas.style.opacity = '1'; heroCtas.style.transform = 'translateY(0)';
         }, (heroDelay + 0.15) * 1000);
         setTimeout(() => {
-          badgeCluster.style.transition = 'opacity 0.8s var(--ease-out)';
-          badgeCluster.style.opacity = '1';
+          if (heroTrustStrip) {
+            heroTrustStrip.style.transition = 'opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out)';
+            heroTrustStrip.style.opacity = '1'; heroTrustStrip.style.transform = 'translateY(0)';
+          }
+        }, (heroDelay + 0.25) * 1000);
+        setTimeout(() => {
+          if (heroVisual) {
+            heroVisual.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1)';
+            heroVisual.style.opacity = '1';
+          }
         }, (heroDelay + 0.3) * 1000);
         setTimeout(() => { heroScroll.classList.add('visible'); }, (heroDelay + 0.8) * 1000);
 
@@ -3758,6 +3761,7 @@
   </script>
   <!-- Reviews System -->
   <script src="js/reviews.js"></script>
+  <script src="js/image-trail.js"></script>
 </body>
 
 </html>
