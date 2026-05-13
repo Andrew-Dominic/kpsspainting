@@ -1,0 +1,27 @@
+{
+  "name": "KPSS Painting Sydney",
+  "short_name": "KPSS Painting",
+  "description": "Sydney's trusted licensed & insured painters. Professional interior & exterior painting services.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F2EDE6",
+  "theme_color": "#1C1915",
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
