@@ -30,7 +30,7 @@
       // If already signed in as allowed admin, go straight to dashboard
       auth.onAuthStateChanged(user => {
         if (user && KPSSAdmin.isAllowedAdmin(user.email)) {
-          window.location.href = 'dashboard.html';
+          window.location.href = '/admin/dashboard.html';
         }
       });
 
@@ -81,14 +81,14 @@
     // --- DASHBOARD PAGES — GUARD ---
     auth.onAuthStateChanged(async (user) => {
       if (!user) {
-        window.location.href = 'index.html';
+        window.location.href = '/admin/';
         return;
       }
 
       // === ALLOWLIST CHECK ON EVERY PAGE LOAD ===
       if (!KPSSAdmin.isAllowedAdmin(user.email)) {
         await auth.signOut();
-        window.location.href = 'index.html';
+        window.location.href = '/admin/';
         return;
       }
 
@@ -107,7 +107,7 @@
   }
 
   function logout() {
-    firebase.auth().signOut().then(() => window.location.href = 'index.html');
+    firebase.auth().signOut().then(() => window.location.href = '/admin/');
   }
 
   window.KPSSAdmin = window.KPSSAdmin || {};
